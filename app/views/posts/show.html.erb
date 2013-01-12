@@ -19,18 +19,18 @@
   <b>Mood:</b>
   <%= @post.mood %>
 </p>
+
+<p>
+  <b>Tags:</b>
+  <%= join_tags(@post) %>
+</p>
+ 
+<h2>Comments</h2>
+<%= render @post.comments %>
+
 <h2>Add a comment:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-  	<%= f.label :commenter %>
-  	<%= f.text_field :commenter %>
-  </div>
-  <div class="field">
-  	<%= f.label :body %><br />
-  	<%= f.text_area :body %>
-  </div>
-<% end %>
+<%= render "comments/form" %>
 
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+ 
+<%= link_to 'Edit Post', edit_post_path(@post) %> |
+<%= link_to 'Back to Posts', posts_path %> |
